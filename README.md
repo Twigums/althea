@@ -1,11 +1,24 @@
 # althea
-<img src="https://github.com/vyvir/althea/blob/main/resources/4.png" alt="althea Logo">
 
-althea is a GUI for AltServer-Linux that allows to easily sideload apps onto an iPhone, an iPad, or an iPod Touch. It supports iOS 15 and later. althea supports x86_64, aarch64, and armv7.
+**THIS FORK IS ONLY TO MENTION THE FIX FOR `DNSServiceRegister result: -65537` ERROR**. 
 
-This app is in a very early state, so if you're experiencing issues or want to help, you can create a [pull request](https://github.com/vyvir/althea/pulls), [report an issue](https://github.com/vyvir/althea/issues), or join [the Discord server](https://discord.gg/DZwRbyXq5Z).
+If I have time, I can try fixing using the shell script.
 
 ## Instructions
+
+1. Install Dependencies below.
+
+2. Edit Avahi daemon configuration file: `sudo vim /etc/avahi/avahi-daemon.conf`. Uncomment the first two lines under `[publish]`. It should look something like this:
+
+  ```
+  [publish]
+  disable-publishing=no
+  disable-user-service-publishing=no
+  ...
+  ```
+
+3. Save and restart the daemon: `sudo systemctl restart avahi-daemon`
+4. Now, you can follow the directions in "Running althea".
 
 ### Dependencies
 
